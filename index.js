@@ -75,6 +75,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   // intentMap.set('your intent name here', yourFunctionHandler);
   // intentMap.set('your intent name here', googleAssistantHandler);
   agent.handleRequest(intentMap);
+ 
+ 
+ callWeatherApi(city, date).then((output) => {
+    res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
+  }).catch(() => {
+    res.json({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
+  });
 });
 
 function callWeatherApi (city, date) {
