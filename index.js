@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyparser.json());
 
 // Webhook route
-app.post('/webhook', (req, res) => {
+app.post('/', (req, res) => {
 	const data = req.body;
 
 	// Code the task you want to achieve with @data
