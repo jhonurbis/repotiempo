@@ -6,16 +6,21 @@ const bodyparser = require('body-parser');
 const app = express();
 app.use(bodyparser.json());
 
-// Webhook route
-app.post('/', (req, res) => {
-	const data = req.body;
 
-	// Code the task you want to achieve with @data
-	// Read the v2 api documentation of dialogflow : https://dialogflow.com/docs/fulfillment
-	// Using the v2 will become mandatory, Google wrote a guide to migrate from v1 to v2 as v2 is officially released
 
-	const response = {
-		fulfillmentMessages: "Your webhook works fine !",
-	}
-	res.json(response);
-});
+app.post('/v2/Hello',(req,res)=>{
+let response = "This is a sample response from your webhook!";//Default response from the webhook to show it’s working
+let responseObj={
+     "fulfillmentText":response
+    ,"fulfillmentMessages":[
+        {
+            "text": {
+                "text": [
+                    "Hello I m Responding to intent"
+                ]
+            }
+        }
+    ]
+    ,"source":""
+}
+return res.json(responseObj);});
