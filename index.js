@@ -8,7 +8,7 @@ app.use(bodyparser.json());
 
 
 
-app.post('/v2/Hello',(req,res)=>{
+app.post('/',(req,res)=>{
 let response = "This is a sample response from your webhook!";//Default response from the webhook to show it’s working
 let responseObj={
      "fulfillmentText":response
